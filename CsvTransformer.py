@@ -10,3 +10,9 @@ class CsvTransformer:
 
     def to_html(self):
         return self.df.to_html()
+    
+    def to_json(self):
+        return self.df.to_json()
+    
+    def to_markdown(self):
+        self.df.to_markdown()
