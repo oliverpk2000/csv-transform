@@ -4,15 +4,22 @@ class CsvTransformer:
 
     def __init__(self, path: str) -> str:
         self.path = path
+        self.file_ext = 'csv'
 
     def load(self):
         self.df = pd.read_csv(self.path)
+        self.rep = self.df.to_csv
 
     def to_html(self):
-        return self.df.to_html()
+        self.file_ext = 'html'
+        self.rep = self.df.to_html()
     
     def to_json(self):
-        return self.df.to_json()
+        self.file_ext = 'json'
+        self.rep = self.df.to_json()
+
+    def get_output_file_name(self) -> str:
+        return self.path.split('.')[0] + '.' + self.file_ext
     
-    def to_markdown(self):
-        self.df.to_markdown()
+    def get_representation(self) -> str:
+        return self.rep
