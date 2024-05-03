@@ -13,17 +13,13 @@ class CsvTransformer:
     def to_html(self):
         self.file_ext = 'html'
         self.rep = self.df.to_html()
-        return self.rep
     
     def to_json(self):
         self.file_ext = 'json'
-        self.rep = self.df.to_json
-        return self.rep
-    
-    def to_markdown(self):
-        self.file_ext = 'md'
-        self.rep = self.df.to_markdown()
-        return self.rep
+        self.rep = self.df.to_json()
 
     def get_output_file_name(self) -> str:
         return self.path.split('.')[0] + '.' + self.file_ext
+    
+    def get_representation(self) -> str:
+        return self.rep
